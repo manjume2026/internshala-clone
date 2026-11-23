@@ -47,7 +47,6 @@ import React, { useEffect, useState } from "react";
 //   },
 // ];
 
-
 const index = () => {
   const [filteredInternships, setfilteredInternships] = useState<any>([]);
   const [isFiltervisible, setisFiltervisible] = useState(false);
@@ -62,7 +61,9 @@ const index = () => {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/internship");
+        const res = await axios.get(
+          "https://internshala-clone-5d8g.onrender.com/api/internship",
+        );
         setinternship(res.data);
         setfilteredInternships(res.data);
       } catch (error) {
@@ -71,7 +72,7 @@ const index = () => {
     };
     fetchdata();
   }, []);
-useEffect(() => {
+  useEffect(() => {
     const filtered = internshipData.filter((internship: any) => {
       const matchesCategory = internship.category
         .toLowerCase()
@@ -83,8 +84,8 @@ useEffect(() => {
     });
     setfilteredInternships(filtered);
   }, [filter, internshipData]);
-  
-    const handlefilterchange = (e: any) => {
+
+  const handlefilterchange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setfilters((prev) => ({
       ...prev,

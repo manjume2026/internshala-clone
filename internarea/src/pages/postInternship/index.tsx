@@ -32,7 +32,7 @@ const index = () => {
   const [isloading, setisloading] = useState(false);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-setFormData((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -46,7 +46,10 @@ setFormData((prev) => ({
     }
     try {
       setisloading(true);
-      const res = await axios.post("http://localhost:5000/api/internship", formData);
+      const res = await axios.post(
+        "https://internshala-clone-5d8g.onrender.com/api/internship",
+        formData,
+      );
       toast.success("job posted successfuly");
       router.push("/adminpanel");
     } catch (error) {

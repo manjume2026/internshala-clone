@@ -53,7 +53,7 @@ const getStatusColor = (status: any) => {
 const index = () => {
   const [searchTerm, setsearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
-    const user = useSelector(selectuser);
+  const user = useSelector(selectuser);
   // const [user, setuser] = useState<any>({
   //   name: "Rahul",
   //   email: "xyz@gmail.com",
@@ -61,18 +61,20 @@ const index = () => {
   //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=faces",
   // });
 
-    const [data, setdata] = useState<any>([]);
-    useEffect(() => {
-      const fetchdata = async () => {
-        try {
-          const res = await axios.get("http://localhost:5000/api/application");
-          setdata(res.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetchdata();
-    }, []);
+  const [data, setdata] = useState<any>([]);
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const res = await axios.get(
+          "https://internshala-clone-5d8g.onrender.com/api/application",
+        );
+        setdata(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchdata();
+  }, []);
   const userapplication = data.filter(
     (app: any) => app.user?.name === user?.name,
   );
@@ -87,7 +89,7 @@ const index = () => {
   const handleacceptandreject = async (id: any, action: any) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/application/${id}`,
+        `https://internshala-clone-5d8g.onrender.com/api/application/${id}`,
         {
           action,
         },
@@ -267,21 +269,21 @@ const index = () => {
                         >
                           View Details
                         </Link> */}
-                        {/* <button
+                    {/* <button
                           onClick={() => {
                             handleacceptandreject(application._id, "accepted"); */}
-                            {/* /* Handle approve */}
-                          {/* }} */}
-                          {/* className="text-green-600 hover:text-green-900"
+                    {/* /* Handle approve */}
+                    {/* }} */}
+                    {/* className="text-green-600 hover:text-green-900"
                         >
                           <CheckCircle2 className="h-5 w-5" />
                         </button>
                         <button
                           onClick={() => {
                             handleacceptandreject(application._id, "rejected"); */}
-                            {/* /* Handle reject */}
-                          {/* }} */}
-                          {/* className="text-red-600 hover:text-red-900"
+                    {/* /* Handle reject */}
+                    {/* }} */}
+                    {/* className="text-red-600 hover:text-red-900"
                         >
                           <XCircle className="h-5 w-5" />
                         </button>

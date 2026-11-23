@@ -48,7 +48,7 @@ const index = () => {
     try {
       setisloading(true);
       const res = await axios.post(
-        "http://localhost:5000/api/job",
+        "https://internshala-clone-5d8g.onrender.com/api/job",
         formData,
       );
       toast.success("job posted successfuly");
@@ -306,7 +306,6 @@ const index = () => {
                 ) : (
                   "Post Job"
                 )}
-            
               </button>
             </div>
           </form>

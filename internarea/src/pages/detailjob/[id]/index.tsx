@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -123,7 +123,7 @@ const index = () => {
     const fetchdata = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/job/${id}`,
+          `https://internshala-clone-5d8g.onrender.com/api/job/${id}`,
         );
         setjob(res.data);
       } catch (error) {
@@ -164,7 +164,7 @@ const index = () => {
         availability,
       };
       await axios.post(
-        "http://localhost:5000/api/application",
+        "https://internshala-clone-5d8g.onrender.com/api/application",
         applicationdata,
       );
       toast.success("Application submit successfully");
@@ -329,7 +329,10 @@ const index = () => {
               </div>
               <div className="flex justify-end pt-4">
                 {user ? (
-                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700" onClick={handlesubmitapplication}>
+                  <button
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+                    onClick={handlesubmitapplication}
+                  >
                     Submit Application
                   </button>
                 ) : (

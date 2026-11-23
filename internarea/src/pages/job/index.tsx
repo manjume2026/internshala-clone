@@ -111,7 +111,6 @@ import React, { useEffect, useState } from "react";
 //    },
 //  ];
 const index = () => {
- 
   const [filteredjob, setfilteredjobs] = useState<any>([]);
   const [isFiltervisible, setisFiltervisible] = useState(false);
   const [filter, setfilters] = useState({
@@ -127,7 +126,7 @@ const index = () => {
     const fetchdata = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/job",
+          "https://internshala-clone-5d8g.onrender.com/api/job",
         );
         setjob(res.data);
         setfilteredjobs(res.data);

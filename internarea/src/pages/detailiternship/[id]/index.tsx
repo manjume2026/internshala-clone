@@ -75,14 +75,14 @@ import { toast } from "react-toastify";
 const index = () => {
   const router = useRouter();
   const { id } = router.query;
-    
+
   const [internshipData, setinternship] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   // useEffect(() => {
   //   const fetchdata = async () => {
   //     try {
   //       const res = await axios.get(
-  //         `http://localhost:5000/api/internship/${id}`,
+  //         `https://internshala-clone-5d8g.onrender.com/api/internship/${id}`,
   //       );
   //       setinternship(res.data);
   //     } catch (error) {
@@ -103,7 +103,7 @@ const index = () => {
         console.log("Internship ID:", id);
 
         const res = await axios.get(
-          `http://localhost:5000/api/internship/${id}`,
+          `https://internshala-clone-5d8g.onrender.com/api/internship/${id}`,
         );
 
         console.log("Internship Details:", res.data);
@@ -119,12 +119,12 @@ const index = () => {
 
     fetchdata();
   }, [router.isReady, id]);
-// const internshipData = internships?.find((intern:any) => intern._id === id);
+  // const internshipData = internships?.find((intern:any) => intern._id === id);
   const [availability, setAvailability] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [coverLetter, setCoverLetter] = useState("");
   const user = useSelector(selectuser);
-  
+
   //   if (!internshipData) {
   //   return (
   //     <div className="min-h-screen flex items-center justify-center">
@@ -148,7 +148,7 @@ const index = () => {
       </div>
     );
   }
-  
+
   const handlesubmitapplication = async () => {
     if (!coverLetter.trim()) {
       toast.error("please write a cover letter");
@@ -168,7 +168,7 @@ const index = () => {
         availability,
       };
       await axios.post(
-        `http://localhost:5000/api/application`,
+        `https://internshala-clone-5d8g.onrender.com/api/application`,
         applicationdata,
       );
       toast.success("Application submit successfully");
@@ -338,7 +338,10 @@ const index = () => {
               </div>
               <div className="flex justify-end pt-4">
                 {user ? (
-                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700" onClick={handlesubmitapplication}>
+                  <button
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+                    onClick={handlesubmitapplication}
+                  >
                     Submit Application
                   </button>
                 ) : (
